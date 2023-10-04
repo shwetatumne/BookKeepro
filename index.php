@@ -1,17 +1,22 @@
 <?php
 /**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
+ * The main archive template file
  *
- * @package WordPress
+ * @package kadence
  */
 
+namespace Kadence;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+get_header();
+
+kadence()->print_styles( 'kadence-content' );
 /**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
+ * Hook for main archive content.
  */
-define( 'WP_USE_THEMES', true );
+do_action( 'kadence_archive' );
 
-/** Loads the WordPress Environment and Template */
-require __DIR__ . '/wp-blog-header.php';
+get_footer();
